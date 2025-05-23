@@ -4,7 +4,7 @@ install:
 	python -m textblob.download_corpora
 
 test:
-	python -m pytest -vv --cov=wukiphrases --cov=nlp_logic testnlp.py
+	python -m pytest -vv --cov=wukiphrases --cov=nlp_logic --cov=main testnlp.py
 
 lint:
 	pylint --disable=R,C *.py nlp_logic/*.py
