@@ -1,6 +1,14 @@
 from fastapi import FastAPI
 import uvicorn
 from nlp_logic.nlp import get_phrases
+import textblob
+from textblob.exceptions import MissingCorpusError
+
+try:
+    _ = textblob.TextBlob("test").noun_phrases
+except MissingCorpusError:
+    import textblob.download_corpora
+    textblob.download_corpora.download_all()
 app = FastAPI()
 
 @app.get("/")
