@@ -27,7 +27,7 @@ def seniment_analysis(name:str):
     sentiment = get_sentiment(name)
     return {"The sentiment analysis result is:": sentiment}
 
-@app.get("txtSentiment/{txt}")
+@app.get("/txtSentiment")
 def text_sentiment(txt:str):
     print("Analyzing your text")
     sentmnt = analyze_txt_sntmnt(txt)

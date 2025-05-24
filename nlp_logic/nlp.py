@@ -30,7 +30,6 @@ def get_sentiment(name):
     sentiment = blob.sentiment
     return sentiment   
 def analyze_txt_sntmnt(text):
-    text = input(str("Enter your text to analyze"))
     blob = get_txtblob(text)
     sntmnt = blob.sentiment
     return sntmnt
