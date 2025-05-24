@@ -23,3 +23,9 @@ def get_phrases(name):
     blob = get_txtblob(text)
     phrases = blob.noun_phrases
     return phrases
+
+def get_sentiment(name):
+    text = sum_wiki(name) 
+    blob = get_txtblob(text)
+    sentiment = blob.sentiment
+    return sentiment   

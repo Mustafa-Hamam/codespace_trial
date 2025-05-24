@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 import uvicorn
-from nlp_logic.nlp import get_phrases
+from nlp_logic.nlp import get_phrases , get_sentiment
 import textblob
 from textblob.exceptions import MissingCorpusError
 
@@ -12,13 +12,19 @@ except MissingCorpusError:
 app = FastAPI()
 
 @app.get("/")
-async def read_root():
+def read_root():
     return {"Hello": "This is my Wikipedia NLP API!"}
 
 @app.get("/wikiphrases/{name}")
-async def wikiphrases(name:str):
+def wikiphrases(name:str):
     print("Creating Phrases for {name}")
     phrases = get_phrases(name)
     return {"Phrases are:": phrases}
+
+@app.get("/sentiment/{name}")
+def seniment_analysis(name:str):
+    print(f"analyzing sentiment of topic {name}")
+    sentiment = get_sentiment(name)
+    return {"The sentiment analysis result is:": sentiment}
 if __name__=='__main__':
     uvicorn.run(app,port=10000,host='0.0.0.0')
